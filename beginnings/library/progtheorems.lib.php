@@ -71,4 +71,63 @@
 		}
 	}
 	
+	function union( $dataA, $dataB ) {
+		$union = $dataA;
+		$index = count($dataA);
+		for ($i = 0; $i < count($dataB); $i++ ) {
+			$j = 0;
+			while (($dataB[$i] != $dataA[$j]) && ($j < count($dataA))) {
+				$j++;
+			}
+			if ( $j == count($dataA)) {
+				$union[$index++] = $dataB[$i];		
+			}
+		}
+		return $union;
+	}
+	
+	function intersect( $dataA, $dataB ) {
+		$intersect = array();
+		$index = 0;
+		for ($j = 0; $j < count($dataA); $j++ ) {
+			$i = 0;
+			while (($dataB[$i] != $dataA[$j]) && ($i < count($dataB))) {
+				$i++;
+			}
+			if ( $i < count($dataB)) {
+				$intersect[$index++] = $dataA[$j];		
+			}
+		}
+		return $intersect;
+	}
+	
+	function runUpSortedSet( $dataA, $dataB ) {
+		$merge = array();
+		$index = 0;
+		$i = 0;
+		$j = 0;
+		while ( ($i < count($dataB)) && ($j < count($dataA)) ) {
+			if ( $dataA[$j] < $dataB[$i]) {
+				$merge[$index++] = $dataA[$j];
+				$j++;
+			} else if ( $dataA[$j] > $dataB[$i]) {
+				$merge[$index++] = $dataB[$i];
+				$i++;
+			} else {
+				$merge[$index++] = $dataA[$j];
+				$j++;
+				$i++;
+			}
+		}
+		while ($i < count($dataB)) {
+			$merge[$index++] = $dataB[$i];
+			$i++;	
+		}
+		while ($j < count($dataA)) {
+			$merge[$index++] = $dataA[$j];
+			$j++;	
+		}
+		return $merge;
+	}
+	
 ?>

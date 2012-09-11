@@ -1,6 +1,6 @@
 <?php
 	include("library/progtheorems.lib.php");
-	$data = array ( 2, 4, 6, 8 );
+	$data = array ( 6, 4, 2, 8 );
 	$divider = 3;
 	print_r($data);
 	if (decisionDivisible($data, $divider)) {

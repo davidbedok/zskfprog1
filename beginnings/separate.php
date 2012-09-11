@@ -1,6 +1,6 @@
 <?php
 	include("library/progtheorems.lib.php");
-	$data = array ( 1, 2, 3, 4, 5, 6, 7, 8, 9 );
+	$data = array ( 6, 1, 5, 2, 4, 9, 7, 3, 8 );
 	separateParity($data, $evenNumbers, $oddNumbers);
 	print "even numbers: ";
 	print_r($evenNumbers);
