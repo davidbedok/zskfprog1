@@ -130,4 +130,32 @@
 		return $merge;
 	}
 	
+	function swap( &$data, $indexA, $indexB ) {
+		$tmp = $data[$indexA];
+		$data[$indexA] = $data[$indexB];
+		$data[$indexB] = $tmp;
+	}
+	
+	function simpleSwapOrdering ( &$data ) {
+		for ( $i = 0; $i < count($data)-1; $i++ ) {
+			for ( $j = $i+1; $j < count($data); $j++ ) {
+				if ( $data[$i] > $data[$j] ) {
+					swap($data, $i, $j);	
+				}
+			}
+		}
+	}
+	
+	function minimumSelectionOrdering( &$data ) {
+		for ( $i = 0; $i < count($data)-1; $i++ ) {
+			$minPos = $i;
+			for ( $j = $i; $j < count($data); $j++ ) {
+				if ( $data[$j] < $data[$minPos] ) {
+					$minPos = $j;
+				}
+			}
+			swap($data, $i, $minPos);
+		}
+	}
+	
 ?>
