@@ -136,7 +136,7 @@
 		$data[$indexB] = $tmp;
 	}
 	
-	function simpleSwapOrdering ( &$data ) {
+	function simpleSwapSort ( &$data ) {
 		for ( $i = 0; $i < count($data)-1; $i++ ) {
 			for ( $j = $i+1; $j < count($data); $j++ ) {
 				if ( $data[$i] > $data[$j] ) {
@@ -146,7 +146,7 @@
 		}
 	}
 	
-	function minimumSelectionOrdering( &$data ) {
+	function minimumSelectionSort( &$data ) {
 		for ( $i = 0; $i < count($data)-1; $i++ ) {
 			$minPos = $i;
 			for ( $j = $i; $j < count($data); $j++ ) {
@@ -156,6 +156,47 @@
 			}
 			swap($data, $i, $minPos);
 		}
+	}
+	
+	function linearSearch( $data, $element ) {
+		$index = -1;
+		$i = 0;
+		while ( ( $data[$i] != $element ) && ( $i < count($data)) ) {
+			$i++;
+		}
+		if ( $i < count($data) ) {
+			$index = $i;	
+		}
+		return $index;
+	}
+	
+	function linearSearchInSortedArray( $data, $element ) {
+		$index = -1;
+		$i = 0;
+		while ( ( $data[$i] < $element ) && ( $i < count($data)) ) {
+			$i++;
+		}
+		if ( ( $i < count($data) ) && ( $data[$i] == $element ) ) {
+			$index = $i;	
+		}
+		return $index;
+	}
+	
+	function binarySearch( $data, $element ) {
+		$lower = 0;
+		$upper = count($data) - 1;
+		$index = -1;
+		while( ( $index == -1 ) && ( $lower <= $upper ) ) {
+			$i = round( ( $lower + $upper ) / 2 );
+			if ( $data[$i] == $element ) {
+				$index = $i;
+			} else if ( $data[$i] < $element ) {
+				$lower = $i+1;
+			} else { 
+				$upper = $i-1;
+			}
+		}
+		return $index;
 	}
 	
 ?>
