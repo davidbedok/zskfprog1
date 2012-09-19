@@ -76,7 +76,7 @@
 		$index = count($dataA);
 		for ($i = 0; $i < count($dataB); $i++ ) {
 			$j = 0;
-			while (($dataB[$i] != $dataA[$j]) && ($j < count($dataA))) {
+			while (($j < count($dataA)) && ($dataB[$i] != $dataA[$j])) {
 				$j++;
 			}
 			if ( $j == count($dataA)) {
@@ -91,7 +91,7 @@
 		$index = 0;
 		for ($j = 0; $j < count($dataA); $j++ ) {
 			$i = 0;
-			while (($dataB[$i] != $dataA[$j]) && ($i < count($dataB))) {
+			while (($i < count($dataB)) && ($dataB[$i] != $dataA[$j])) {
 				$i++;
 			}
 			if ( $i < count($dataB)) {
