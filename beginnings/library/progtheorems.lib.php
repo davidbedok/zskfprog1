@@ -9,7 +9,7 @@
 	
 	function decisionDivisible( $data, $divider ) {
 		$i = 0;
-		while ( ( $data[$i] % $divider != 0 ) && ( $i < count($data) ) ) {
+		while ( ( $i < count($data) ) && ( $data[$i] % $divider != 0 ) ) {
 			$i++;
 		}
 		return ( $i < count($data) );
@@ -51,7 +51,7 @@
 		$count = 0;
 		for ($i = 0; $i < count($data); $i++) {
 			if ( $data[$i] % $divider == 0 ) {
-				$divisibleData[$count++] = $data[$i];	
+				$divisibleData[$count++] = $i;	
 			}
 		}
 		return $divisibleData;
@@ -161,7 +161,7 @@
 	function linearSearch( $data, $element ) {
 		$index = -1;
 		$i = 0;
-		while ( ( $data[$i] != $element ) && ( $i < count($data)) ) {
+		while ( ( $i < count($data) ) && ( $data[$i] != $element ) ) {
 			$i++;
 		}
 		if ( $i < count($data) ) {
@@ -173,7 +173,7 @@
 	function linearSearchInSortedArray( $data, $element ) {
 		$index = -1;
 		$i = 0;
-		while ( ( $data[$i] < $element ) && ( $i < count($data)) ) {
+		while ( ( $i < count($data) ) && ( $data[$i] < $element ) ) {
 			$i++;
 		}
 		if ( ( $i < count($data) ) && ( $data[$i] == $element ) ) {

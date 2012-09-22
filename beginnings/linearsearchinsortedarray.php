@@ -1,9 +1,9 @@
 <?php
 	include("library/progtheorems.lib.php");
-	$data = array ( 2, 3, 4, 5, 8, 10 );
-	$index = linearSearchInSortedArray($data, 8);
+	$numbers = array ( 2, 3, 4, 5, 8, 10 );
+	$index = linearSearchInSortedArray($numbers, 8);
 	if ( $index != -1 ) {
-		echo "index of element (".$data[$index].") in array: ".$index;
+		echo "index of element (".$numbers[$index].") in array: ".$index;
 	} else {
 		echo "array does not contain the searched element";
 	}

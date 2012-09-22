@@ -7,7 +7,7 @@
 		return $result;
 	}
 	
-	$data = array ( 30, 20, 40, 10 );
-	$sum = summation($data);
+	$numbers = array ( 30, 20, 40, 10 );
+	$sum = summation($numbers);
 	print $sum;
 ?>
