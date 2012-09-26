@@ -1,0 +1,21 @@
+table  {
+	border-spacing		: 0px;
+}
+
+td {
+	border				: 1px solid black;
+	width				: 100px;
+}
+
+tr:hover {
+	color				: RGB(250,250,250);
+	cursor				: pointer;
+}
+
+tr:nth-of-type(odd) {
+	background-color	: RGB(200,200,200);
+}
+
+tr:nth-of-type(even) {
+	background-color	: RGB(150,150,150);
+}
