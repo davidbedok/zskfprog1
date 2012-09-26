@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>forms</title>
+</head>
+<body>
+<h1>Forms</h1>
+<form id="dataformid" name="dataform" action="hello.html" method="get">
+	<fieldset>
+		<legend>Data form</legend>
+		<table>
+			<tr>
+				<td><label for="nameid">Name:</label></td>
+				<td><input id="nameid" name="name" type="text" value="Darth Vader" maxlength="20" /></td>
+			</tr>
+			<tr>
+				<td><label for="rofieldid">Readonly:</label></td>
+				<td><input id="rofieldid" name="rofield" type="text" value="Death Star" readonly="readonly" /></td>
+			</tr>
+			<tr>
+				<td><label for="dafieldid">Disabled:</label></td>
+				<td><input id="dafieldid" name="dafield" type="text" value="Luke" disabled="disabled" /></td>
+			</tr>			
+			<tr>
+				<td><label for="passwordid">Password:</label></td>
+				<td><input id="passwordid" name="password" type="password" /></td>
+			</tr>
+			<tr>
+				<td><label for="iqid">IQ:</label></td>
+				<td><input id="iqid" name="iq" type="number" value="100" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input id="helloid" name="hello" type="button" value="Hello" /></td>
+			</tr>
+			<tr>
+				<td><input id="rbmale" name="sex" type="radio" value="male" checked="checked" /></td>
+				<td><label for="rbmale">Male</label></td>
+			</tr>
+			<tr>
+				<td><input id="rbfemale" name="sex" type="radio" value="female" /></td>
+				<td><label for="rbfemale">Female</label></td>
+			</tr>
+			<tr>
+				<td><input id="cbearth" name="planet" type="checkbox" value="earth" checked="checked" /></td>
+				<td><label for="cbearth">Earth</label></td>
+			</tr>
+			<tr>
+				<td><input id="cbmars" name="planet" type="checkbox" value="mars" /></td>
+				<td><label for="cbmars">Mars</label></td>
+			</tr>
+			<tr>
+				<td><label for="carsid">Cars:</label></td>
+				<td>
+					<select id="carsid" name="cars">
+						<optgroup label="Swedish Cars">
+							<option value="volvo">Volvo</option>
+							<option value="saab" selected="selected">Saab</option>
+						</optgroup>
+						<optgroup label="German Cars">
+							<option value="mercedes">Mercedes</option>
+							<option value="audi">Audi</option>
+						</optgroup>
+					</select>			
+				</td>
+			</tr>
+			<tr>
+				<td><label for="osid">OS:</label></td>
+				<td>
+					<select id="osid" name="os" multiple="multiple" size="4">
+						<option value="win95">Microsoft Windows 95</option>
+						<option value="win98" selected="selected">Microsoft Windows 98</option>
+						<option value="win2000">Microsoft Windows 2000</option>
+						<option value="winxp">Microsoft Windows XP</option>
+						<option value="winvista">Microsoft Windows Vista</option>
+						<option value="win7">Microsoft Windows 7</option>
+						<option value="win8">Microsoft Windows 8</option>
+						<option value="suse">SUSE Linux</option>
+						<option value="redhat" selected="selected">RedHat</option>
+						<option value="macos">MacOS</option>
+					</select>			
+				</td>
+			</tr>
+			<tr>
+				<td><label for="browsersid">Browsers:</label></td>
+				<td>
+					<input id="browsersid" name="browser" list="browserdatalistid">
+					<datalist id="browserdatalistid">
+						<option value="Internet Explorer">
+						<option value="Firefox">
+						<option value="Chrome">
+						<option value="Opera">
+						<option value="Safari">
+					</datalist>			
+				</td>
+			</tr>
+			<tr>
+				<td><label for="sliderid">Age:</label></td>
+				<td>
+					0<input id="sliderid" name="slider" type="range" value="50" />100
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<textarea id="loremid" name="lorem" rows="4" cols="25">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</textarea>
+				</td>
+			</tr>
+			<tr>
+				<td><label for="avatarid">Avatar</label></td>
+				<td><input id="avatarid" name="avatar" type="file" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input id="imgid" name="img" type="image" src="images/book.png" /></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Submit"></td>
+				<td><input type="reset" value="Reset"></td>
+			</tr>
+		</table>
+		<input id="customactionid" name="customaction" type="hidden" value="12345" />
+	</fieldset>
+</form>
+</body>
+</html>
