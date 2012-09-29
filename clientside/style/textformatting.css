@@ -1,0 +1,22 @@
+.demo  {
+	color				: RGB(170,170,120);
+	text-align			: center;
+	/* [left|center|right|justify] */
+}
+
+.demo a {
+	text-decoration		: none;
+	/* [none|overline|line-through|underline|blink] */
+	text-transform		: uppercase;
+	/* [uppercase|lowercase|capitalize]*/
+}
+
+p {
+	text-indent			: 50px;
+	letter-spacing		: 2px;
+	/* can be negative! */
+	word-spacing		: 5px;
+	line-height			: 150%;
+	direction			: ltr;
+	/* [ltr|rtl] */
+}

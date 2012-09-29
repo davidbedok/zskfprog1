@@ -1,0 +1,12 @@
+.bgrColor  {
+	background-color	: RGB(200,200,150);
+}
+
+.bgrImage {
+	background-image	: url('./../images/book.png');
+	background-repeat	: no-repeat; 
+		/* [repeat|no-repeat|repeat-x|repeat-y] */
+	background-position	: right top;	
+		/* [left|center|right] [top|center|bottom] or x y (css units) */
+}
+
