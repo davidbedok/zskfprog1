@@ -1,0 +1,18 @@
+ul.demo {
+	list-style-type		: circle;
+	/* def: disc */
+	/* [circle|disc|square|none] */
+}
+
+ol {
+	list-style-type		: upper-roman;
+	/* def: decimal */
+	/* [armenian|cjk-ideographic|decimal|decimal-leading-zero|georgian|hebrew|hiragana|hiragana-iroha|katakana|katakana-iroha|lower-alpha|lower-greek|lower-latin|lower-roman|upper-alpha|upper-latin|upper-roman|none] */
+	list-style-position	: inside;
+	/* [inside|outside] */
+}
+
+ul.demoimg {
+	list-style-image	: url('./../images/sample.gif');
+	/* this is not crossbrowser solution */
+}

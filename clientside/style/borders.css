@@ -1,0 +1,13 @@
+div#demoA {
+	border-style		: solid;
+	/* [none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset] */
+	border-width		: 2px;
+	border-color		: RGB(150,150,200);
+}
+
+div#demoB {
+	border-top-style	:dotted;
+	border-right-style	:solid;
+	border-bottom-style	:dotted;
+	border-left-style	:solid;
+}

@@ -1,0 +1,7 @@
+div  {
+	border		: 1px solid #AAAAAA;
+	padding		: 5px;
+	width		: 400px;
+	box-shadow	: 10px 10px 10px 2px #101010;
+	/* box-shadow: h-shadow v-shadow blur spread color; */
+}

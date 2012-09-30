@@ -1,0 +1,16 @@
+body {
+	font-size			: 100%;
+	/* this set the default font-size (require for IE) */
+}
+
+p {
+	font-family			: Arial, Verdana, sans-serif;
+	font-style			: italic;
+	/* [normal|italic|oblique] */
+	font-size			: 0.75em; /* 16px * 0.75 = 12px */
+	/* font-size: 13px; */
+	font-weight			: bold;
+	/* [lighter|normal|bold] or 100..900 normal:400 bold:700 */
+	font-variant		: small-caps; 
+	/* [normal|small-caps] */
+}
