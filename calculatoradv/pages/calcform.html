@@ -1,0 +1,35 @@
+<form id="calcformid" name="calcform" action="{phpself}" method="get">
+	<fieldset>
+		<legend>Operands</legend>
+		<table id="outer">
+			<tr>
+				<td>
+					<table id="inner">
+						<tr>
+							<td><input id="operandleftid" name="operandleft" type="number" value="{operandleft}" /></td>
+							<td>
+								<select id="operationid" name="operation">
+									<option value="summation" {summationselected}>+</option>
+									<option value="subtraction" {subtractionselected}>-</option>
+									<option value="multiplication" {multiplicationselected}>*</option>
+									<option value="division" {divisionselected}>/</option>
+								</select>			
+							</td>
+							<td><input id="operandrightid" name="operandright" type="number" value="{operandright}" /></td>
+							<td>=</td>
+							<td>{result}</td>
+						</tr>
+						<tr>
+							<td colspan="5">
+								<input type="submit" value="Calculate">
+							</td>
+						</tr>
+					</table>				
+				</td>
+				<td class="toright">
+					<img id="calcimg" src="images/calculator.png" alt="calculator web application" />
+				</td>
+			</tr>
+		</table>
+	</fieldset>
+</form>
