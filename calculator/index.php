@@ -23,7 +23,7 @@
 			if ( $operandright != 0 ) {
 				$result = $operandleft / $operandright;
 			} else {
-				$result = "n/a";	
+				$result = "NaN";	
 			}
 			break;
 	}
@@ -40,7 +40,7 @@
 							<td><input id="operandleftid" name="operandleft" type="number" value="<?php print $operandleft; ?>" /></td>
 							<td>
 								<select id="operationid" name="operation">
-								<option value="summation" <?php ( $operation == "summation" ? 'selected="selected"' : '' ); ?>>+</option>
+									<option value="summation" <?php print ( $operation == "summation" ? 'selected="selected"' : '' ); ?>>+</option>
 									<option value="subtraction" <?php print ( $operation == "subtraction" ? 'selected="selected"' : '' ); ?>>-</option>
 									<option value="multiplication" <?php print ( $operation == "multiplication" ? 'selected="selected"' : '' ); ?>>*</option>
 									<option value="division" <?php print ( $operation == "division" ? 'selected="selected"' : '' ); ?>>/</option>

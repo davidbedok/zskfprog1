@@ -22,26 +22,53 @@
 		return $result;		
 	}
 
-	function getFileContent ( $file_name ){
-		$fp = fopen($file_name,"r");
-		$filesize = filesize($file_name);
+	function getFileContent ( $filename ){
+		$fp = fopen($filename,"r");
+		$filesize = filesize($filename);
 		$filecontent = fread($fp, $filesize);
-		$filecontent = str_replace("\r","",$filecontent);
-		$filecontent = str_replace("\n","",$filecontent);
 		fclose($fp);					
 		return $filecontent;
 	}
 	
-	function calcFormHtml( $operandleft, $operation, $operandright, $result ) {
-		$calcform = getFileContent("pages/calcform.html");
-		$calcform = str_replace("{phpself}",$_SERVER['PHP_SELF'],$calcform);
-		$calcform = str_replace("{operandleft}",$operandleft,$calcform);
-		$calcform = str_replace("{summationselected}",( $operation == "summation" ? 'selected="selected"' : '' ),$calcform);
-		$calcform = str_replace("{subtractionselected}",( $operation == "subtraction" ? 'selected="selected"' : '' ),$calcform);
-		$calcform = str_replace("{multiplicationselected}",( $operation == "multiplication" ? 'selected="selected"' : '' ),$calcform);
-		$calcform = str_replace("{divisionselected}",( $operation == "division" ? 'selected="selected"' : '' ),$calcform);
-		$calcform = str_replace("{operandright}",$operandright,$calcform);
-		$calcform = str_replace("{result}",$result,$calcform);
-		return $calcform;
+	function frameHtml( $operandleft, $operation, $operandright, $result ) {
+		$content = getFileContent("pages/frame.html");
+		$calcform = calcFormHtml($operandleft,$operation,$operandright,$result);
+		$content = str_replace("{calcform}",$calcform,$content);
+		return $content;
 	}
+	
+	function calcFormHtml( $operandleft, $operation, $operandright, $result ) {
+		$content = getFileContent("pages/calcform.html");
+		$content = str_replace("{phpself}",$_SERVER['PHP_SELF'],$content);
+		$outertable = outerTableHtml($operandleft,$operation,$operandright,$result);
+		$content = str_replace("{outertable}",$outertable,$content);
+		return $content;
+	}
+	
+	function outerTableHtml( $operandleft, $operation, $operandright, $result ) {
+		$content = getFileContent("pages/outertable.html");
+		$innertable = innerTableHtml($operandleft,$operation,$operandright,$result);
+		$content = str_replace("{innertable}",$innertable,$content);
+		return $content;
+	}
+	
+	function innerTableHtml( $operandleft, $operation, $operandright, $result ) {
+		$content = getFileContent("pages/innertable.html");
+		$content = str_replace("{operandleft}",$operandleft,$content);
+		$content = str_replace("{operandright}",$operandright,$content);
+		$content = str_replace("{result}",$result,$content);
+		$operations = operationsHtml($operation);
+		$content = str_replace("{operations}",$operations,$content);
+		return $content;
+	}
+	
+	function operationsHtml( $operation ) {
+		$content = getFileContent("pages/operations.html");
+		$content = str_replace("{summationselected}",( $operation == "summation" ? 'selected="selected"' : '' ),$content);
+		$content = str_replace("{subtractionselected}",( $operation == "subtraction" ? 'selected="selected"' : '' ),$content);
+		$content = str_replace("{multiplicationselected}",( $operation == "multiplication" ? 'selected="selected"' : '' ),$content);
+		$content = str_replace("{divisionselected}",( $operation == "division" ? 'selected="selected"' : '' ),$content);
+		return $content;
+	}
+	
 ?>

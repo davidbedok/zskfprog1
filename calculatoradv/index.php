@@ -5,8 +5,5 @@
 	if (isset($_REQUEST['operation'])){ $operation = $_REQUEST['operation']; } else { $operation = "summation"; }
 	$result = calcResult($operandleft,$operation,$operandright);
 	
-	$frame = getFileContent("pages/frame.html");
-	$calcform = calcFormHtml($operandleft,$operation,$operandright,$result);
-	$frame = str_replace("{calcform}",$calcform,$frame);
-	print $frame;
+	print frameHtml($operandleft,$operation,$operandright,$result);
 ?>

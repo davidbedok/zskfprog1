@@ -1,6 +1,7 @@
 body {
 	font-size	: 100%;
 	font-family	: Arial, Verdana, sans-serif;
+	background-color: #e6d6bd;
 }
 
 h1 {
@@ -10,7 +11,7 @@ h1 {
 
 #calcformid fieldset {
 	width		: 500px;
-	color		: RGB(0,0,200);	
+	color		: #78a3c0;	
 	font-weight	: bold; 
 }
 
@@ -25,6 +26,12 @@ h1 {
 #calcformid table td {
 	color		: black;
 	padding		: 3px;
+}
+
+#calcformid input, 
+#calcformid select {
+	background-color: #c0ae91;
+	color		: #535353;
 }
 
 #calcformid input[type="number"] {
