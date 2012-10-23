@@ -37,16 +37,16 @@
 				<td>
 					<table id="inner">
 						<tr>
-							<td><input id="operandleftid" name="operandleft" type="number" value="<?php print $operandleft; ?>" /></td>
+							<td><input name="operandleft" type="number" value="<?php print $operandleft; ?>" /></td>
 							<td>
-								<select id="operationid" name="operation">
-									<option value="summation" <?php print ( $operation == "summation" ? 'selected="selected"' : '' ); ?>>+</option>
-									<option value="subtraction" <?php print ( $operation == "subtraction" ? 'selected="selected"' : '' ); ?>>-</option>
-									<option value="multiplication" <?php print ( $operation == "multiplication" ? 'selected="selected"' : '' ); ?>>*</option>
-									<option value="division" <?php print ( $operation == "division" ? 'selected="selected"' : '' ); ?>>/</option>
+								<select name="operation">
+								<option value="summation" <?php if ( $operation == "summation" ) { print 'selected="selected"'; } ?>>+</option>
+									<option value="subtraction" <?php if ( $operation == "subtraction" ) { print 'selected="selected"'; } ?>>-</option>
+									<option value="multiplication" <?php if ( $operation == "multiplication" ) { print 'selected="selected"'; } ?>>*</option>
+									<option value="division" <?php if ( $operation == "division" ) { print 'selected="selected"'; } ?>>/</option>
 								</select>			
 							</td>
-							<td><input id="operandrightid" name="operandright" type="number" value="<?php print $operandright; ?>" /></td>
+							<td><input name="operandright" type="number" value="<?php print $operandright; ?>" /></td>
 							<td>=</td>
 							<td><?php print $result; ?></td>
 						</tr>
