@@ -20,9 +20,38 @@
 	
 	$frame = str_replace("{singleperson}",personHtml($person),$frame);
 	
-	$anotherperson = array( 'firstname' => "Padmé", 'familyname' => "Amidala", 'age' => 29, 'title' => "Princess/Queen/Senator" );
+	$anotherperson = array( 'firstname' => "Padmé", 'familyname' => "Amidala", 'birthfirstname' => "", 'birthfamilyname' => "", 'age' => 29, 'title' => "Princess/Queen/Senator" );
 	
 	$frame = str_replace("{anotherperson}",personHtml($anotherperson),$frame);
+	
+	$arrayOne = array();
+	$arrayOne[0] = 1;
+	$arrayOne[1] = 2;
+	$arrayOne[2] = 3;
+	
+	$arrayTwo = array();
+	$arrayTwo[0] = 10;
+	$arrayTwo[1] = 20;
+	
+	$arrayOfArrays = array();
+	$arrayOfArrays[0] = $arrayOne;
+	$arrayOfArrays[1] = $arrayTwo;
+	$arrayOfArrays[2] = randomNumbers(3,100, 999);
+	
+	$frame = str_replace("{arrayofarrays}",arrayOfArraysHtml($arrayOfArrays),$frame);
+	
+	// print $arrayOfArrays[0][0]; // 1
+	// print $arrayOfArrays[0][1]; // 2
+	// print $arrayOfArrays[1][1]; // 20
+ 	
+	$matrix = array();
+	$matrix[0] = array(1, 2, 3, 4, 5);
+	$matrix[1] = array(6, 7, 8, 9, 10);
+	$matrix[2] = array(11, 12, 13, 14, 15);
+	$matrix[3] = array(16, 17, 18, 19, 20);
+	$matrix[4] = array(21, 22, 23, 24, 25);
+
+	$frame = str_replace("{matrix}",matrixAdvHtml($matrix),$frame);
 	
 	$people = array();
 	$people[] = createPerson("Darth", "Vader", "Anakin", "Skywalker", 47, "Jedi/Sith");

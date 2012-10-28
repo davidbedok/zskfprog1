@@ -34,5 +34,20 @@
 		}
 		return $intersect;
 	}
+		
+	function union( $dataA, $dataB ) {
+		$union = $dataA;
+		$index = count($dataA);
+		for ($i = 0; $i < count($dataB); $i++ ) {
+			$j = 0;
+			while (($j < count($dataA)) && ($dataB[$i] != $dataA[$j])) {
+				$j++;
+			}
+			if ( $j == count($dataA)) {
+				$union[$index++] = $dataB[$i];		
+			}
+		}
+		return $union;
+	}
 
 ?>

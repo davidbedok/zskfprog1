@@ -22,6 +22,63 @@
 		return $content;
 	}
 	
+	function arrayOfArraysHtml( $data ) {
+		$content = getFileContent("pages/arrayofarrays.html");
+		$subcontent = getFileContent("pages/arrayofarraysrow.html");
+		$rows = "";
+		for ($i = 0; $i < count($data); $i++) {
+			$row = $subcontent;
+			$row = str_replace("{array}",numbersHtml($data[$i]),$row);
+			$rows .= $row;
+		}
+		$content = str_replace("{arrays}",$rows,$content);
+		return $content;
+	}
+	
+	function matrixHtml( $data ) {
+		$matrix = getFileContent("pages/matrix.html");
+		$matrixrow = getFileContent("pages/matrixrow.html");
+		$matrixcell = getFileContent("pages/matrixcell.html");
+		$rows = "";
+		for ($i = 0; $i < count($data); $i++) {
+			$row = $matrixrow;	
+			$cells = "";
+			for ($j = 0; $j < count($data[$i]); $j++) {
+				$cell = $matrixcell;
+				$cell = str_replace("{value}",$data[$i][$j],$cell);
+				$cells .= $cell;
+			}
+			$row = str_replace("{matrixcells}",$cells,$row);
+			$rows .= $row;
+		}
+		$matrix = str_replace("{matrixrows}",$rows,$matrix);
+		return $matrix;
+	}
+	
+	function matrixAdvHtml( $data ) {
+		$matrix = getFileContent("pages/matrix.html");
+		$matrixrow = getFileContent("pages/matrixrow.html");
+		$matrixcell = getFileContent("pages/matrixcell.html");
+		$rows = "";
+		for ($i = 0; $i < count($data); $i++) {
+			$row = $matrixrow;	
+			$row = str_replace("{matrixcells}",matrixRow($matrixcell, $data[$i]),$row);
+			$rows .= $row;
+		}
+		$matrix = str_replace("{matrixrows}",$rows,$matrix);
+		return $matrix;
+	}
+	
+	function matrixRow( $matrixcell, $dataRow ) {
+		$cells = "";
+		for ($j = 0; $j < count($dataRow); $j++) {
+			$cell = $matrixcell;
+			$cell = str_replace("{value}",$dataRow[$j],$cell);
+			$cells .= $cell;
+		}
+		return $cells;
+	}
+	
 	function randomNumbers( $count, $min, $max ) {
 		$data = array();
 		for ($i = 0; $i < $count; $i++) {
