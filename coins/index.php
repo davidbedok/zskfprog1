@@ -3,8 +3,8 @@
 	$COINS_FILE = "data/coins.dat";
 	
 	include("library/common.lib.php");
-	include("library/coins.lib.php");
 	include("library/data.lib.php");
+	include("library/coins.lib.php");
 	include("library/view.lib.php");
 	
 	$issuers = loadIssuers($ISSUERS_FILE);
@@ -24,7 +24,7 @@
 		$designer = getParameter('designer','-');
 		$material = getParameter('material','-');
 		$coin = createCoins($countrycode,$type,$nominalvalue,$family,$firstissue,$designer,$material);
-		insertCoins($COINS_FILE,$coin);
+		insertCoin($COINS_FILE,$coin);
 		
 		$coins = loadCoins($COINS_FILE);
 		$coins = filterCoins($coins,$countrycode);

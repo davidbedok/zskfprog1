@@ -42,7 +42,7 @@
 		return $coin;
 	}
 	
-	function insertCoins ( $filename, $coin ){
+	function insertCoin( $filename, $coin ){
 		$line = implode(";",$coin)."\n"; 
 		file_put_contents($filename,$line,FILE_APPEND);
 	}
