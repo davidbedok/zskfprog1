@@ -3,12 +3,10 @@
 
 	$numbers = array(10, 20, 30, 40, 50);
 	
-	$frame = getFileContent("pages/frame.html");
-	$numbers = numbersHtml($numbers);
-	$frame = str_replace("{numbers}",$numbers,$frame);
+	print numbersHtml($numbers);
 	
 	$randomnumbers = randomNumbers(10, 50, 55);
-	$frame = str_replace("{randomnumbers}",numbersHtml($randomnumbers),$frame);
+	print numbersHtml($randomnumbers);
 	
 	$person = array();
 	$person['firstname'] = "Darth";
@@ -18,11 +16,11 @@
 	$person['age'] = 47;
 	$person['title'] = "Jedi/Sith";
 	
-	$frame = str_replace("{singleperson}",personHtml($person),$frame);
+	print personHtml($person);
 	
 	$anotherperson = array( 'firstname' => "Padmé", 'familyname' => "Amidala", 'birthfirstname' => "", 'birthfamilyname' => "", 'age' => 29, 'title' => "Princess/Queen/Senator" );
 	
-	$frame = str_replace("{anotherperson}",personHtml($anotherperson),$frame);
+	print personHtml($anotherperson);
 	
 	$arrayOne = array();
 	$arrayOne[0] = 1;
@@ -38,7 +36,7 @@
 	$arrayOfArrays[1] = $arrayTwo;
 	$arrayOfArrays[2] = randomNumbers(3,100, 999);
 	
-	$frame = str_replace("{arrayofarrays}",arrayOfArraysHtml($arrayOfArrays),$frame);
+	print arrayOfArraysHtml($arrayOfArrays);
 	
 	// print $arrayOfArrays[0][0]; // 1
 	// print $arrayOfArrays[0][1]; // 2
@@ -50,8 +48,10 @@
 	$matrix[2] = array(11, 12, 13, 14, 15);
 	$matrix[3] = array(16, 17, 18, 19, 20);
 	$matrix[4] = array(21, 22, 23, 24, 25);
+	$matrix[5] = array(26, 27, 28, 29, 30);
+	$matrix[6] = array(31, 32, 33, 34, 35);
 
-	$frame = str_replace("{matrix}",matrixAdvHtml($matrix),$frame);
+	print matrixAdvHtml($matrix);
 	
 	$people = array();
 	$people[] = createPerson("Darth", "Vader", "Anakin", "Skywalker", 47, "Jedi/Sith");
@@ -59,7 +59,5 @@
 	$people[] = createPerson("Jar Jar", "Binks", "Jar Jar", "Binks", 88, "General/Senator");
 	$people[] = createPerson("Chewbacca", "-", "Chewbacca", "-", 43, "First mate");
 	
-	$frame = str_replace("{people}",peopleAdvHtml($people),$frame);
-	
-	print $frame;
+	print peopleAdvHtml($people);
 ?>
