@@ -15,10 +15,10 @@
 	$people[] = createPerson("Jar Jar", "Binks", "Jar Jar", "Binks", 88, "General/Senator");
 	$people[] = createPerson("Chewbacca", "-", "Chewbacca", "-", 43, "First mate");
 	
-	print_r($people);
+	print peopleAdvHtml($people);
 	print "<br/><br/>";
 	
-	usort($people, userDefinedCompare);
+	usort($people, 'userDefinedCompare');
 	
-	print_r($people);
+	print peopleAdvHtml($people);
 ?>

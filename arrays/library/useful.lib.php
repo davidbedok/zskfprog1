@@ -17,7 +17,7 @@
 	}
 	
 	function assortmentDivisibleNew( $data ) {
-		return array_filter($data, dividerCallback );
+		return array_filter($data, 'dividerCallback' );
 	}
 	
 	function intersect( $dataA, $dataB ) {

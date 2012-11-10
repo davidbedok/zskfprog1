@@ -11,11 +11,11 @@
 	
 	print_r($numbers);
 	print "<br/>";
-	$numbers = array_map(square, $numbers);
+	$numbers = array_map('square', $numbers);
 	print_r($numbers);
 	print "<br/>";
 	
-	array_walk($numbers, addon, 2);
+	array_walk($numbers, 'addon', 2);
 	print_r($numbers);
 	print "<br/>";
 ?>
