@@ -16,6 +16,7 @@
 		$countrycode = getParameter('issuer','HU');
 		$coins = filterCoins($coins,$countrycode);
 	} else if ( $action == 'insert' ) {
+		$unid = maximumUnid($coins) + 1;
 		$countrycode = getParameter('issuer','-');
 		$type = getParameter('type','-');
 		$nominalvalue = getParameter('nominalvalue','-');
@@ -23,9 +24,20 @@
 		$firstissue = getParameter('firstissue','-');
 		$designer = getParameter('designer','-');
 		$material = getParameter('material','-');
-		$coin = createCoins($countrycode,$type,$nominalvalue,$family,$firstissue,$designer,$material);
+		$coin = createCoins($unid,$countrycode,$type,$nominalvalue,$family,$firstissue,$designer,$material);
 		insertCoin($COINS_FILE,$coin);
 		
+		$coins = loadCoins($COINS_FILE);
+		$coins = filterCoins($coins,$countrycode);
+	} else if ( $action == 'delete' ) {
+		$countrycode = getParameter('issuer','HU');
+		$key = findSubmitImgKeyByPrefix($_REQUEST,"delete_");
+		if ( $key != "" ) {
+			$end = substr($key,strlen("delete_"));
+			$unid = substr($end,0,strpos($end,"_"));
+			deleteCoin($coins,$unid);
+			saveCoins($COINS_FILE,$coins);
+		}
 		$coins = loadCoins($COINS_FILE);
 		$coins = filterCoins($coins,$countrycode);
 	}

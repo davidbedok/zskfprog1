@@ -3,8 +3,9 @@
 	function frameHtml($issuers,$coins,$currentcode) {
 		$content = getFileContent("pages/frame.html");
 		$content = str_replace("{listform}",listFormHtml($issuers,$currentcode),$content);
-		$content = str_replace("{coins}",coinsHtml($coins),$content);
+		$content = str_replace("{coins}",coinsHtml($coins,$currentcode),$content);
 		$content = str_replace("{newcoinform}",newCoinFormHtml($issuers,$currentcode),$content);
+		$content = str_replace("{phpself}",$_SERVER['PHP_SELF'],$content);
 		return $content;
 	}
 	
@@ -34,7 +35,7 @@
 		return $content;
 	}
 	
-	function coinsHtml( $coins ) {
+	function coinsHtml( $coins, $currentcode ) {
 		$frame = getFileContent("pages/coinsframe.html");
 		if ( count($coins) > 0 ) {
 			$content = getFileContent("pages/coins.html");
@@ -48,6 +49,7 @@
 			$content = getFileContent("pages/coinsempty.html");
 		}
 		$frame = str_replace("{coins}",$content,$frame);
+		$frame = str_replace("{countrycode}",$currentcode,$frame);
 		return $frame;
 	}
 	
@@ -61,7 +63,6 @@
 	
 	function newCoinFormHtml($issuers,$currentcode) {
 		$content = getFileContent("pages/newcoinform.html");
-		$content = str_replace("{phpself}",$_SERVER['PHP_SELF'],$content);
 		$content = str_replace("{issuers_select}",issuersSelect($issuers,$currentcode),$content);
 		return $content;	
 	}

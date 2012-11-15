@@ -1,4 +1,8 @@
-<fieldset>
-	<legend>Coins</legend>
-	{coins}
-</fieldset>
+<form class="coinsform" name="deleteform" action="{phpself}" method="get">
+	<input type="hidden" name="action" value="delete" />
+	<input type="hidden" name="issuer" value="{countrycode}" />
+	<fieldset>
+		<legend>Coins</legend>
+		{coins}
+	</fieldset>
+</form>

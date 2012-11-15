@@ -23,15 +23,16 @@
 		$content = file($filename,FILE_IGNORE_NEW_LINES);
 		foreach ($content as $line) {
 			$coindata = explode(";",$line);
-			if ( count($coindata) == 7 ) {
-				$coins[] = createCoins(trim($coindata[0]), trim($coindata[1]), trim($coindata[2]), trim($coindata[3]), trim($coindata[4]), trim($coindata[5]), trim($coindata[6]));	
+			if ( count($coindata) == 8 ) {
+				$coins[] = createCoins(trim($coindata[0]), trim($coindata[1]), trim($coindata[2]), trim($coindata[3]), trim($coindata[4]), trim($coindata[5]), trim($coindata[6]), trim($coindata[7]));	
 			}
 		}
 		return $coins;
 	}
 	
-	function createCoins( $countrycode, $type, $nominalvalue, $family, $firstissue, $designer, $material ) {
+	function createCoins( $unid, $countrycode, $type, $nominalvalue, $family, $firstissue, $designer, $material ) {
 		$coin = array();
+		$coin['unid'] = $unid;
 		$coin['countrycode'] = $countrycode;
 		$coin['type'] = $type;
 		$coin['nominalvalue'] = $nominalvalue;
@@ -45,6 +46,14 @@
 	function insertCoin( $filename, $coin ){
 		$line = implode(";",$coin)."\n"; 
 		file_put_contents($filename,$line,FILE_APPEND);
+	}
+	
+	function saveCoins( $filename, $coins ){
+		$lines = "";
+		foreach ($coins as $coin) {
+			$lines .= implode(";",$coin)."\n";
+		}
+		file_put_contents($filename,$lines);
 	}
 	
 ?>
