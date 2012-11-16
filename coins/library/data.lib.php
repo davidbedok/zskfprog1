@@ -24,13 +24,13 @@
 		foreach ($content as $line) {
 			$coindata = explode(";",$line);
 			if ( count($coindata) == 8 ) {
-				$coins[] = createCoins(trim($coindata[0]), trim($coindata[1]), trim($coindata[2]), trim($coindata[3]), trim($coindata[4]), trim($coindata[5]), trim($coindata[6]), trim($coindata[7]));	
+				$coins[] = createCoin(trim($coindata[0]), trim($coindata[1]), trim($coindata[2]), trim($coindata[3]), trim($coindata[4]), trim($coindata[5]), trim($coindata[6]), trim($coindata[7]));	
 			}
 		}
 		return $coins;
 	}
 	
-	function createCoins( $unid, $countrycode, $type, $nominalvalue, $family, $firstissue, $designer, $material ) {
+	function createCoin( $unid, $countrycode, $type, $nominalvalue, $family, $firstissue, $designer, $material ) {
 		$coin = array();
 		$coin['unid'] = $unid;
 		$coin['countrycode'] = $countrycode;
