@@ -24,7 +24,7 @@
 		$firstissue = getParameter('firstissue','-');
 		$designer = getParameter('designer','-');
 		$material = getParameter('material','-');
-		$coin = createCoins($unid,$countrycode,$type,$nominalvalue,$family,$firstissue,$designer,$material);
+		$coin = createCoin($unid,$countrycode,$type,$nominalvalue,$family,$firstissue,$designer,$material);
 		insertCoin($COINS_FILE,$coin);
 		
 		$coins = loadCoins($COINS_FILE);
