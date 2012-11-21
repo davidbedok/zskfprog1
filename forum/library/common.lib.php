@@ -15,17 +15,4 @@
 		}
 		return $value;
 	}
-	
-	function findSubmitImgKeyByPrefix( $request, $prefix ) {
-		$key = "";
-		$keys = array_keys($request);
-		$i = 0;
-		while ( ($i < count($keys)) && ( strpos($keys[$i],$prefix) === false ) ) {
-			$i++;
-		}
-		if ( $i < count($keys) ) {
-			$key = $keys[$i];	
-		}
-		return $key;
-	}
 ?>

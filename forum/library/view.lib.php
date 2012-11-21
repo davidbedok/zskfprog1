@@ -1,10 +1,30 @@
 <?php
 
-	function frameHtml($actioncontent) {
+	function frameHtml( $actioncontent ) {
 		$content = getFileContent("pages/frame.html");
 		$content = str_replace("{actioncontent}",$actioncontent,$content);
 		$content = str_replace("{phpself}",$_SERVER['PHP_SELF'],$content);
 		return $content;
+	}
+	
+	function listHtml( $userposts, $currentuser, $error ) {
+		$content = getFileContent("pages/list.html");
+		$content = str_replace("{box}",boxHtml($currentuser,$error),$content);
+		$content = str_replace("{userposts}",userPostsHtml($userposts),$content);
+		$content = str_replace("{newpost}",newPostHtml($currentuser),$content);
+		return $content;
+	}
+	
+	function boxHtml( $currentuser, $error ) {
+		$box = '';
+		if ( count( $currentuser ) > 0 ) {
+			$box = getFileContent("pages/userbox.html");
+			$box = fillHtml($box,$currentuser);
+		} else {
+			$box = getFileContent("pages/loginbox.html");
+			$box = str_replace("{error}",$error,$box);
+		}
+		return $box;
 	}
 	
 	function userPostsHtml( $userposts ) {
@@ -26,35 +46,30 @@
 		return $content;
 	}
 	
-	function gergre($userposts,$currentcode) {
-		$content = getFileContent("pages/listform.html");
-		$content = str_replace("{phpself}",$_SERVER['PHP_SELF'],$content);
-		$content = str_replace("{issuers_select}",issuersSelect($issuers,$currentcode),$content);
-		return $content;	
+	function registerHtml( $error ) {
+		$content = getFileContent("pages/register.html");
+		$content = str_replace("{error}",$error,$content);
+		return $content;
 	}
 
-	function issuersSelect( $issuers, $currentcode ) {
-		$content = getFileContent("pages/issuers_select.html");
-		$subcontent = getFileContent("pages/issuer_option.html");
-		$options = '';
-		foreach ($issuers as $issuer) {
-			$option = $subcontent;
-			$option = str_replace("{code}",$issuer['code'],$option);
-			$option = str_replace("{country}",$issuer['country'],$option);
-			$selected = '';
-			if ( $currentcode == $issuer['code'] ) {
-				$selected = 'selected="selected"';
-			}
-			$option = str_replace("{selected}",$selected,$option);
-			$options .= $option;
+	function errorsHtml( $errors ) {
+		$content = getFileContent("pages/errors.html");
+		$subcontent = getFileContent("pages/error.html");
+		$elements = '';
+		foreach ($errors as $error) {
+			$element = $subcontent;
+			$element = str_replace("{error}",$error,$element);
+			$elements .= $element;
 		}
-		$content = str_replace("{issuer_option}",$options,$content);
+		$content = str_replace("{errors}",$elements,$content);
 		return $content;
 	}
 	
-	function newCoinFormHtml($issuers,$currentcode) {
-		$content = getFileContent("pages/newcoinform.html");
-		$content = str_replace("{issuers_select}",issuersSelect($issuers,$currentcode),$content);
+	function newPostHtml($currentuser) {
+		$content = '';
+		if ( count( $currentuser ) > 0 ) {
+			$content = getFileContent("pages/newpost.html");
+		}
 		return $content;	
 	}
 	

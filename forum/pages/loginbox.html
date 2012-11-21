@@ -1,0 +1,44 @@
+<table>
+	<tr>
+		<td>
+			<form class="forumform" name="loginform" action="{phpself}" method="get">
+				<input type="hidden" name="action" value="login" />
+				<fieldset>
+					<legend>Loginbox</legend>
+					<table>
+						<tr>
+							<td>
+								<label for="nicknameid">Nickname:</label>
+							</td>
+							<td>
+								<input type="text" id="nicknameid" name="nickname" />
+							</td>
+							<td>
+								<label for="passwordid">Password:</label>
+							</td>
+							<td>
+								<input type="password" id="passwordid" name="password" />
+							</td>
+							<td>
+								<input type="submit" value="Login" />
+							</td>
+						</tr>
+						<tr>
+							<td colspan="5" class="error">
+								{error}
+							</td>
+						</tr>
+					</table>
+				</fieldset>
+			</form>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<form class="forumform" name="registerform" action="{phpself}" method="get">
+				<input type="hidden" name="action" value="gotoregister" />
+				<input type="submit" value="Goto Register" />
+			</form>
+		</td>
+	</tr>
+</table>

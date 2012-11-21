@@ -40,7 +40,7 @@
 		return $post;
 	}
 	
-	function insertData( $filename, $data ){
+	function insertToFile( $filename, $data ){
 		$line = implode(";",$data)."\n"; 
 		file_put_contents($filename,$line,FILE_APPEND);
 	}

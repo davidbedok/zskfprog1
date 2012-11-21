@@ -15,48 +15,79 @@
 	}
 	if (!isset($_SESSION['INIT'])){
 		$_SESSION['INIT'] = true;
+		$_SESSION['USER'] = array();
 		$_SESSION['USERS'] = loadUsers($USERS_FILE);
 		$_SESSION['POSTS'] = loadPosts($POSTS_FILE);
 		$_SESSION['USERPOSTS'] = fillUserPosts($_SESSION['USERS'],$_SESSION['POSTS']);
 	}
+	$USER = $_SESSION['USER'];
 	$USERS = $_SESSION['USERS'];
 	$POSTS = $_SESSION['POSTS'];
 	$USERPOSTS = $_SESSION['USERPOSTS'];
 
 	$action = getParameter('action','list');
+
+	$error = '';
 	
 	$actioncontent = '';
-	if ( $action == 'list' ) {
 	
-		$actioncontent = userPostsHtml($USERPOSTS);
-		
-	} else if ( $action == 'insert' ) {
-		/*
-		$unid = maximumUnid($coins) + 1;
-		$countrycode = getParameter('issuer','-');
-		$type = getParameter('type','-');
-		$nominalvalue = getParameter('nominalvalue','-');
-		$family = getParameter('family','-');
-		$firstissue = getParameter('firstissue','-');
-		$designer = getParameter('designer','-');
-		$material = getParameter('material','-');
-		$coin = createCoins($unid,$countrycode,$type,$nominalvalue,$family,$firstissue,$designer,$material);
-		insertCoin($COINS_FILE,$coin);
-		
-		$coins = loadCoins($COINS_FILE);
-		$coins = filterCoins($coins,$countrycode);*/
-	} else if ( $action == 'delete' ) {
-		/*
-		$countrycode = getParameter('issuer','HU');
-		$key = findSubmitImgKeyByPrefix($_REQUEST,"delete_");
-		if ( $key != "" ) {
-			$end = substr($key,strlen("delete_"));
-			$unid = substr($end,0,strpos($end,"_"));
-			deleteCoin($coins,$unid);
-			saveCoins($COINS_FILE,$coins);
+	if ( $action == 'login' ) {	
+		$nickname = getParameter('nickname','');
+		$password = getParameter('password','');
+		$USER = login($USERS,$nickname,$password);
+		if ( count ($USER) > 0 ) {
+			$_SESSION['USER'] = $USER;
+		} else {
+			$error = 'Login failed';
 		}
-		$coins = loadCoins($COINS_FILE);
-		$coins = filterCoins($coins,$countrycode); */
+		$action = 'list';
+	}
+	if ( $action == 'logout' ) {
+		$USER = array();
+		$_SESSION['USER'] = $USER;
+		$action = 'list';
+	}
+	if ( $action == 'register' ) {
+		$nickname = getParameter('nickname','');
+		$familyname = getParameter('familyname','');
+		$firstname = getParameter('firstname','');
+		$password = getParameter('password','');
+		$passwordagain = getParameter('passwordagain','');
+		$errors = checkRegister($nickname,$familyname,$firstname,$password,$passwordagain);
+		if ( count($errors) > 0 ) {
+			$error = errorsHtml($errors);
+			$action = 'gotoregister';
+		} else {
+			$newUserUnid = maximumUnid($USERS) + 1;
+			$USER = createUser($newUserUnid,$nickname,$familyname,$firstname,$password);
+			insertToFile($USERS_FILE,$USER);
+			
+			$USERS = loadUsers($USERS_FILE);
+			$_SESSION['USERS'] = $USERS;
+			
+			$_SESSION['USER'] = $USER;
+			$action = 'list';
+		}
+	}
+	if ( $action == 'newpost' ) {
+		$message = getParameter('message','');	
+		$newPost = createPost($USER['unid'],$message);
+		insertToFile($POSTS_FILE,$newPost);
+		
+		$POSTS = loadPosts($POSTS_FILE);
+		$_SESSION['POSTS'] = $POSTS;
+		
+		$USERPOSTS = fillUserPosts($USERS,$POSTS);
+		$_SESSION['USERPOSTS'] = $USERPOSTS;
+		
+		$action = 'list';
+	}
+	
+	if ( $action == 'list' ) {
+		$actioncontent = listHtml($USERPOSTS,$USER,$error);	
+	} 
+	if ( $action == 'gotoregister' ) {
+		$actioncontent = registerHtml($error);	
 	}
 	
 	print frameHtml($actioncontent);
