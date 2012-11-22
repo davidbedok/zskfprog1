@@ -1,0 +1,72 @@
+<table>
+	<tr>
+		<td>
+			<form class="forumform" name="registerform" action="{phpself}" method="get">
+				<input type="hidden" name="action" value="register" />
+				<fieldset>
+					<legend>Registerbox</legend>
+					<table>
+						<tr>
+							<td colspan="2">
+								{error}
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="nicknameid">Nickname:</label>
+							</td>
+							<td>
+								<input type="text" id="nicknameid" name="nickname" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="familynameid">Family name:</label>
+							</td>
+							<td>
+								<input type="text" id="familynameid" name="familyname" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="firstnameid">First name:</label>
+							</td>
+							<td>
+								<input type="text" id="firstnameid" name="firstname" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="passwordid">Password:</label>
+							</td>
+							<td>
+								<input type="password" id="passwordid" name="password" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="passwordagainid">Password again:</label>
+							</td>
+							<td>
+								<input type="password" id="passwordagainid" name="passwordagain" />
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<input type="submit" value="Register" />
+							</td>
+						</tr>
+					</table>
+				</fieldset>
+			</form>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<form class="forumform" name="backform" action="{phpself}" method="get">
+				<input type="hidden" name="action" value="list" />
+				<input type="submit" value="Back" />
+			</form>
+		</td>
+	</tr>
+</table>

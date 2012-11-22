@@ -1,0 +1,3 @@
+<?php
+	$content = registerHtml($error);
+?>

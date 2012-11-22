@@ -28,37 +28,11 @@
 	}
 	
 	function login ( $users, $nickname, $password ) {
-		$user = array();
-		$i = 0;
-		while ( ( $i < count($users) ) && ( $users[$i]['nickname'] != $nickname ) ) {
-			$i++;
-		}
-		if ( $i < count($users) ) {
-			if ( $users[$i]['password'] == $password ) {
-				$user = $users[$i];
-			}
-		}
-		return $user;
+		
 	}
 	
 	function checkRegister($nickname, $familyname, $firstname, $password, $passwordagain) {
-		$errors = array();
-		if ( strlen($nickname) < 5 ) {
-			$errors[] = "Nickname is too short (min length: 5).";	
-		}
-		if ( $familyname == "" ) {
-			$errors[] = "Familyname is empty.";	
-		}
-		if ( $firstname == "" ) {
-			$errors[] = "Firstname is empty.";	
-		}
-		if ( $password == "" ) {
-			$errors[] = "Password is empty.";	
-		}
-		if ( $password != $passwordagain ) {
-			$errors[] = "Passwords are different.";	
-		}
-		return $errors;
+		
 	}
 	
 	function maximumUnid ( $data ) {
