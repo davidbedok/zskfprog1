@@ -21,10 +21,10 @@
 	}
 	
 	function createUserPost( $usernick, $message ) {
-		$post = array();
-		$post['usernick'] = $usernick;
-		$post['message'] = $message;
-		return $post;
+		$userpost = array();
+		$userpost['usernick'] = $usernick;
+		$userpost['message'] = $message;
+		return $userpost;
 	}
 	
 	function login ( $users, $nickname, $password ) {

@@ -9,5 +9,5 @@
 	$USERPOSTS = fillUserPosts($USERS,$POSTS);
 	$_SESSION['USERPOSTS'] = $USERPOSTS;
 	
-	$forward = 'list';
+	$forward = 'gotolist';
 ?>

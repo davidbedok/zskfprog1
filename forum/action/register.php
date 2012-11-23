@@ -7,6 +7,7 @@
 	$errors = checkRegister($nickname,$familyname,$firstname,$password,$passwordagain);
 	if ( count($errors) > 0 ) {
 		$error = errorsHtml($errors);
+		$registerdata = createUser(-1,$nickname,$familyname,$firstname,"");
 		$forward = 'gotoregister';
 	} else {
 		$newUserUnid = maximumUnid($USERS) + 1;

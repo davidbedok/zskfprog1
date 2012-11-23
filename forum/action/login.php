@@ -7,5 +7,5 @@
 	} else {
 		$error = 'Login failed';
 	}
-	$forward = 'list';
+	$forward = 'gotolist';
 ?>

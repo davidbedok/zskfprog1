@@ -1,3 +1,3 @@
 <?php
-	$content = registerHtml($error);
+	$content = registerHtml($error,$registerdata);
 ?>

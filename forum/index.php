@@ -11,12 +11,13 @@
 	
 	include("session.php");
 	
-	$action = getParameter('action','list');
+	$action = getParameter('action','gotolist');
 
 	$error = '';
+	$registerdata = createUser(-1,"","","","");
 	$content = '';
 	$forward = '';
-	
+
 	include("action/".$action.".php");
 	if ( $forward != '' ) {
 		include("action/".$forward.".php");

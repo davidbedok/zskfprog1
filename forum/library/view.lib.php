@@ -15,6 +15,7 @@
 		return $content;
 	}
 	
+	// private
 	function boxHtml( $currentuser, $error ) {
 		$box = '';
 		if ( count( $currentuser ) > 0 ) {
@@ -27,6 +28,7 @@
 		return $box;
 	}
 	
+	// private
 	function userPostsHtml( $userposts ) {
 		$content = getFileContent("pages/userposts.html");
 		$subcontent = getFileContent("pages/userpost.html");
@@ -38,6 +40,7 @@
 		return $content;
 	}
 	
+	// private
 	function fillHtml( $content, $data ) {
 		$datakeys = array_keys($data);
 		foreach ( $datakeys as $key ) {
@@ -46,9 +49,19 @@
 		return $content;
 	}
 	
-	function registerHtml( $error ) {
+	// private
+	function newPostHtml($currentuser) {
+		$content = '';
+		if ( count( $currentuser ) > 0 ) {
+			$content = getFileContent("pages/newpost.html");
+		}
+		return $content;	
+	}
+	
+	function registerHtml( $error, $registerdata ) {
 		$content = getFileContent("pages/register.html");
 		$content = str_replace("{error}",$error,$content);
+		$content = fillHtml($content,$registerdata);
 		return $content;
 	}
 
@@ -63,14 +76,6 @@
 		}
 		$content = str_replace("{errors}",$elements,$content);
 		return $content;
-	}
-	
-	function newPostHtml($currentuser) {
-		$content = '';
-		if ( count( $currentuser ) > 0 ) {
-			$content = getFileContent("pages/newpost.html");
-		}
-		return $content;	
 	}
 	
 ?>
