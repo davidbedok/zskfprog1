@@ -27,7 +27,7 @@
 		$coin = createCoin($unid,$countrycode,$type,$nominalvalue,$family,$firstissue,$designer,$material);
 		insertCoin($COINS_FILE,$coin);
 		
-		$coins = loadCoins($COINS_FILE);
+		$coins[] = $coin;
 		$coins = filterCoins($coins,$countrycode);
 	} else if ( $action == 'delete' ) {
 		$countrycode = getParameter('issuer','HU');
