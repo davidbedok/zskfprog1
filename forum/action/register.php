@@ -18,6 +18,6 @@
 		$_SESSION['USERS'] = $USERS;
 		
 		$_SESSION['USER'] = $USER;
-		$forward = 'list';
+		$forward = 'gotolist';
 	}
 ?>

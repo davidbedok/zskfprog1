@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	if(function_exists("date_default_timezone_set") and function_exists("date_default_timezone_get")) @date_default_timezone_set(@date_default_timezone_get());
 	
 	$USERS_FILE = "data/users.dat";
 	$POSTS_FILE = "data/posts.dat";
