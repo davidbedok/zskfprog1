@@ -21,8 +21,7 @@
 	} else {
 		$memberunids = assortmentConnections($NETWORK,$member);
 		$membernetwork = assortmentMembers($MEMBERS,$memberunids);
-		$memberphones = assortmentPhones($PHONES,$member);
-		$content = memberHtml(findMember($MEMBERS,$member),$membernetwork,$PHONETYPES,$memberphones);
+		$content = memberHtml(findMember($MEMBERS,$member),$membernetwork);
 	}
 	
 	print frameHtml($content);

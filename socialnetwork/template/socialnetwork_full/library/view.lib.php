@@ -27,28 +27,10 @@
 		return $content;
 	}
 	
-	function memberHtml( $member, $membernetwork, $phonetypes, $memberphones ) {
+	function memberHtml( $member, $membernetwork ) {
 		$content = getFileContent("pages/singlemember.html");
 		$content = fillHtml($content,$member);
 		$content = str_replace("{connections}",membersHtml($membernetwork),$content);
-		$content = str_replace("{phones}",phonesHtml($phonetypes,$memberphones),$content);
-		return $content;
-	}
-	
-	function phonesHtml( $phonetypes, $phones ) {
-		if ( count($phones) > 0 ) {
-			$content = getFileContent("pages/phones.html");
-			$subcontent = getFileContent("pages/phone.html");
-			$rows = "";
-			foreach ($phones as $phone) {
-				$row = fillHtml($subcontent,$phone);
-				$row = str_replace("{phonetype}",phoneType($phonetypes,$phone['phonetype_unid']),$row);
-				$rows .= $row;
-			}
-			$content = str_replace("{phones}",$rows,$content);
-		} else {
-			$content = getFileContent("pages/nophone.html");
-		}
 		return $content;
 	}
 	
