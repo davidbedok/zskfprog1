@@ -1,0 +1,24 @@
+body {
+	font-size	: 100%;
+	font-family	: Arial, Verdana, sans-serif;
+	background-color: #ffffff;
+}
+
+img {
+	padding		: 0px;
+	margin		: 0px;
+	outline		: 0px;
+	border		: 0px;	
+}
+
+.notetable {
+	border-spacing	: 0px;
+	padding		: 0px;
+	margin		: 0px;
+}
+
+.notetable td {
+	padding		: 0px;
+	margin		: 0px;
+	border		: 0px;
+}
